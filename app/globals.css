@@ -1,26 +1,143 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/*
+ * Career Guidance Workshop 2026 — IVORY / GREEN / YELLOW editorial theme.
+ *   #fbfbee  ivory paper (canvas)
+ *   #0b6d41  deep green (brand: headings, links, primary buttons)
+ *   #ffde59  bright yellow (accent FILLS only — highlighter, bars, tags)
+ * Body text uses a near-black green for legibility; yellow is never used as a
+ * text colour (fails contrast on light). Tokens in @theme inline become
+ * utilities: bg-paper, text-ink, text-green, bg-yellow, border-line, font-display…
+ */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-paper: #fbfbee;
+  --color-paper-2: #f3f3df;
+  --color-card: #ffffff;
+  --color-ink: #14271b;
+  --color-ink-soft: #5b6b60;
+  --color-line: #e6e6cf;
+
+  --color-green: #0b6d41;
+  --color-green-deep: #084e2f;
+  --color-yellow: #ffde59;
+  --color-yellow-deep: #f5c842;
+
+  /* Semantic aliases for the base layer. */
+  --color-background: var(--color-paper);
+  --color-foreground: var(--color-ink);
+
+  --font-sans: var(--font-noto-tamil);
+  --font-display: var(--font-fraunces);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background-color: var(--color-paper);
+  /* Soft corner tints in the brand colours. */
+  background-image:
+    radial-gradient(ellipse 60% 45% at 95% -8%, rgba(255, 222, 89, 0.22), transparent 60%),
+    radial-gradient(ellipse 55% 45% at -6% 6%, rgba(11, 109, 65, 0.08), transparent 55%);
+  background-attachment: fixed;
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--color-ink);
+  font-family: var(--font-noto-tamil), "Noto Sans Tamil", sans-serif;
+  overflow-x: hidden;
+}
+
+/* Editorial display face for headings, with Tamil fallback. */
+.font-display {
+  font-family: var(--font-fraunces), var(--font-noto-tamil), serif;
+}
+
+/* Faint paper grain for tactile warmth. */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.35;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+}
+
+/* --------------------------------------------------------------------------
+ * Motion — staggered load-in, scroll reveals, a drawn highlight, gentle float.
+ * ------------------------------------------------------------------------ */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes draw-underline {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+@keyframes soft-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+
+/* Staggered hero entrance: add .hero-in and set --d inline for the delay. */
+.hero-in {
+  opacity: 0;
+  animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: var(--d, 0s);
+}
+
+.animate-float { animation: soft-float 7s ease-in-out infinite; }
+
+/* Yellow highlighter swipe drawn beneath the accent word in the headline. */
+.ink-underline {
+  position: relative;
+  display: inline-block;
+}
+.ink-underline::after {
+  content: "";
+  position: absolute;
+  left: -0.05em;
+  right: -0.05em;
+  bottom: 0.05em;
+  height: 0.4em;
+  z-index: -1;
+  background: rgba(255, 222, 89, 0.85);
+  transform-origin: left center;
+  animation: draw-underline 0.7s cubic-bezier(0.65, 0, 0.35, 1) 0.8s both;
+}
+
+/* Scroll-reveal — toggled by the <Reveal> IntersectionObserver component. */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Boarding-pass perforation notch (event-details ticket). Cuts to the paper. */
+.ticket-notch {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-paper);
+  border: 1px solid var(--color-line);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .hero-in,
+  .animate-float,
+  .ink-underline::after {
+    animation: none;
+  }
+  .hero-in { opacity: 1; }
+  .reveal { opacity: 1; transform: none; transition: none; }
 }
