@@ -18,8 +18,7 @@ export function Hero() {
         style={{ ["--d" as string]: "0.05s" }}
       >
         <OrgBadge>{t.orgs.jkkn}</OrgBadge>
-        <OrgBadge>{t.orgs.cdc}</OrgBadge>
-        <OrgBadge>{t.orgs.yi}</OrgBadge>
+        <OrgBadge>{t.orgs.partners}</OrgBadge>
       </div>
 
       <p

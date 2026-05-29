@@ -22,7 +22,7 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
-  title: "Career Guidance Workshop 2026 | JKKN Institutions · CDC · Yi",
+  title: "Career Guidance Workshop 2026 | JKKN Institutions, Kumarapalayam · CDC · Yi",
   description:
     "A free career guidance workshop for Class 12 students and parents in Edappadi — Tamil Nadu college admissions, course selection, and AI-driven careers. 12 June 2026, 10:30 AM, Edappadi Community Hall.",
 };

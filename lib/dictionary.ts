@@ -23,9 +23,10 @@ export interface Dictionary {
   };
   /** Organising bodies shown as badges. */
   orgs: {
+    /** Host institution + location. */
     jkkn: string;
-    cdc: string;
-    yi: string;
+    /** Merged partner credit: CDC + Yi – Young Indians. */
+    partners: string;
   };
   hero: {
     /** Small kicker line above the title. */
@@ -111,9 +112,8 @@ const ta: Dictionary = {
     aria: "மொழியை மாற்று",
   },
   orgs: {
-    jkkn: "JKKN Institutions",
-    cdc: "CDC",
-    yi: "Yi – Young Indians",
+    jkkn: "JKKN Institutions, Kumarapalayam",
+    partners: "CDC · Yi – Young Indians",
   },
   hero: {
     eventType: "அன்புடன் அழைக்கிறோம்",
@@ -144,7 +144,7 @@ const ta: Dictionary = {
   },
   contact: {
     label: "தொடர்புக்கு / For Enquiries",
-    email: "ceo.office@jkkn.ac.in",
+    email: "ceooffice@jkkn.ac.in",
   },
   ticket: {
     admit: "நுழைவு அனுமதி",
@@ -154,7 +154,7 @@ const ta: Dictionary = {
     welcomeLead: "உங்கள் வருகையை ",
     welcomeAccent: "எதிர்பார்க்கிறோம்!",
     signOffLead: "நன்றியுடன்,",
-    signOffOrg: "நிர்வாகம், JKKN Institutions · CDC · Yi",
+    signOffOrg: "நிர்வாகம், JKKN Institutions, Kumarapalayam · CDC · Yi",
   },
   form: {
     heading: "உங்கள் இடத்தை பதிவு செய்யுங்கள்",
@@ -193,9 +193,8 @@ const en: Dictionary = {
     aria: "Change language",
   },
   orgs: {
-    jkkn: "JKKN Institutions",
-    cdc: "CDC",
-    yi: "Yi – Young Indians",
+    jkkn: "JKKN Institutions, Kumarapalayam",
+    partners: "CDC · Yi – Young Indians",
   },
   hero: {
     eventType: "You're warmly invited",
@@ -226,7 +225,7 @@ const en: Dictionary = {
   },
   contact: {
     label: "For Enquiries / தொடர்புக்கு",
-    email: "ceo.office@jkkn.ac.in",
+    email: "ceooffice@jkkn.ac.in",
   },
   ticket: {
     admit: "ADMIT ONE",
@@ -236,7 +235,7 @@ const en: Dictionary = {
     welcomeLead: "We look forward to ",
     welcomeAccent: "welcoming you!",
     signOffLead: "With gratitude,",
-    signOffOrg: "Management, JKKN Institutions · CDC · Yi",
+    signOffOrg: "Management, JKKN Institutions, Kumarapalayam · CDC · Yi",
   },
   form: {
     heading: "Reserve your seat",

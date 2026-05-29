@@ -8,6 +8,7 @@
  * right after a short intro on mobile). Topics + event details follow as
  * supporting content. All copy is bilingual via useT().
  */
+import Image from "next/image";
 import { PaperBackdrop } from "./components/PaperBackdrop";
 import { Hero } from "./components/Hero";
 import { Topics } from "./components/Topics";
@@ -28,9 +29,14 @@ export default function Home() {
       {/* Sticky top bar: wordmark + language toggle. */}
       <header className="sticky top-0 z-50 border-b border-line/70 bg-paper/85 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5">
-          <span className="font-display text-base font-black tracking-tight text-green">
-            JKKN
-          </span>
+          <Image
+            src="/jkkn-logo.png"
+            alt="JKKN Institutions"
+            width={500}
+            height={500}
+            priority
+            className="h-9 w-auto"
+          />
           <LanguageToggle />
         </div>
       </header>
