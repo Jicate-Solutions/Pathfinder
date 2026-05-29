@@ -28,14 +28,14 @@ export default function Home() {
 
       {/* Sticky top bar: wordmark + language toggle. */}
       <header className="sticky top-0 z-50 border-b border-line/70 bg-paper/85 backdrop-blur-md">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-3 py-2">
           <Image
             src="/jkkn-logo.png"
             alt="JKKN Institutions"
             width={500}
             height={500}
             priority
-            className="h-9 w-auto"
+            className="h-20 w-auto sm:h-24"
           />
           <LanguageToggle />
         </div>
